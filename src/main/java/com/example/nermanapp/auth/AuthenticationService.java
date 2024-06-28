@@ -48,6 +48,14 @@ public class AuthenticationService {
                     .refreshToken(null)
                     .build();
         }
+        var userCheck = userRepo.findByEmail(email).orElse(null);
+        if(userCheck != null){
+            return AuthenticationResponse.builder()
+                    .status("Email is exist")
+                    .accessToken(null)
+                    .refreshToken(null)
+                    .build();
+        }
         var user = User.builder()
                 .email(request.getEmail())
                 .accountName(request.getName())
@@ -55,6 +63,8 @@ public class AuthenticationService {
                 .phone(request.getPhone())
                 .userStatus(true)
                 .role(Role.CUSTOMER)
+                .avatar("https://res.cloudinary.com/dpxs39hkb/image/upload/v1719499363/wlimd1mgkqztk2ygdfgx.webp")
+                .accountBalance(0)
                 .build();
         var save = userRepo.save(user);
         var jwtToken = jwtService.generateToken(user);
