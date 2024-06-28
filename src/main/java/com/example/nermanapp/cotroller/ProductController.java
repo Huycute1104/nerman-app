@@ -14,7 +14,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1/product")
 @RequiredArgsConstructor
-public class FoodController {
+public class ProductController {
 
     @Autowired
     private ProductService productService;

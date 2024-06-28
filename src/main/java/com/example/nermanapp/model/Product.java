@@ -63,4 +63,9 @@ public class Product {
     @JsonIgnore
     private List<Cart> cart;
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @JsonIgnore
+    private List<ProductImages> productImages;
+
 }
