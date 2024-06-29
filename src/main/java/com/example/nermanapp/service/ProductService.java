@@ -7,5 +7,6 @@ import java.util.Optional;
 
 public interface ProductService {
     public List<Product> getAll();
+
 }
 
