@@ -5,8 +5,10 @@ import com.cloudinary.utils.ObjectUtils;
 import com.example.nermanapp.auth.AuthenticationService;
 import com.example.nermanapp.auth.RegisterRequest;
 import com.example.nermanapp.dto.Request.CategoryRequest.CreateCategoryRequest;
+import com.example.nermanapp.dto.Request.ProductRequest.ImageRequest;
 import com.example.nermanapp.dto.Request.ProductRequest.ProductRequest;
 import com.example.nermanapp.service.CategoryService;
+import com.example.nermanapp.service.ProductImageService;
 import com.example.nermanapp.service.ProductService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -47,7 +49,8 @@ public class NermanAppApplication {
     public CommandLineRunner commandLineRunner(
             AuthenticationService service,
             CategoryService categoryService,
-            ProductService productService
+            ProductService productService,
+            ProductImageService productImageService
     ) {
         return args -> {
             //Admin
@@ -254,6 +257,81 @@ public class NermanAppApplication {
                     .quantity(100)
                     .build();
             productService.create(product12);
+
+            var image1 = ImageRequest.builder()
+                    .url("https://res.cloudinary.com/dpxs39hkb/image/upload/v1719503393/ldagguk6z0cqcc4cpp3e.jpg")
+                    .productId(1)
+                    .build();
+            productImageService.create(image1);
+
+            var image2 = ImageRequest.builder()
+                    .url("https://res.cloudinary.com/dpxs39hkb/image/upload/v1719503389/bxkrvgjuluaa3vgd3k3c.jpg")
+                    .productId(2)
+                    .build();
+            productImageService.create(image2);
+
+            var image3 = ImageRequest.builder()
+                    .url("https://res.cloudinary.com/dpxs39hkb/image/upload/v1719503386/d2vksvwqzyxijktbivil.jpg")
+                    .productId(3)
+                    .build();
+            productImageService.create(image3);
+
+            var image4 = ImageRequest.builder()
+                    .url("https://res.cloudinary.com/dpxs39hkb/image/upload/v1719503397/ljh49snl1dm0xfkvajti.jpg")
+                    .productId(4)
+                    .build();
+            productImageService.create(image4);
+
+            var image5 = ImageRequest.builder()
+                    .url("https://res.cloudinary.com/dpxs39hkb/image/upload/v1719503382/cpzcampnetyiunmirbzk.jpg")
+                    .productId(5)
+                    .build();
+            productImageService.create(image5);
+
+            var image6 = ImageRequest.builder()
+                    .url("https://res.cloudinary.com/dpxs39hkb/image/upload/v1719503491/uqclachh3lxfdlxvypxj.jpg")
+                    .productId(6)
+                    .build();
+            productImageService.create(image6);
+
+            var image7 = ImageRequest.builder()
+                    .url("https://res.cloudinary.com/dpxs39hkb/image/upload/v1719503509/zdbzxuammerxwzv6j6s8.jpg")
+                    .productId(7)
+                    .build();
+            productImageService.create(image7);
+
+            var image8 = ImageRequest.builder()
+                    .url("https://res.cloudinary.com/dpxs39hkb/image/upload/v1719503500/xa5kcpcjbautwzftmvr8.jpg")
+                    .productId(8)
+                    .build();
+            productImageService.create(image8);
+
+            var image9 = ImageRequest.builder()
+                    .url("https://res.cloudinary.com/dpxs39hkb/image/upload/v1719503488/tsezuh3r13oumb6kxygh.jpg")
+                    .productId(9)
+                    .build();
+            productImageService.create(image9);
+
+            var image10 = ImageRequest.builder()
+                    .url("https://res.cloudinary.com/dpxs39hkb/image/upload/v1719503496/czfgrzvc6fkvt8ez5mmw.jpg")
+                    .productId(10)
+                    .build();
+            productImageService.create(image10);
+
+            var image11 = ImageRequest.builder()
+                    .url("https://res.cloudinary.com/dpxs39hkb/image/upload/v1719503512/pc9dferdn2q5i0wehxns.jpg")
+                    .productId(11)
+                    .build();
+            productImageService.create(image11);
+
+            var image12 = ImageRequest.builder()
+                    .url("https://res.cloudinary.com/dpxs39hkb/image/upload/v1719503505/ufrmlgxfiziwps4pwhoa.jpg")
+                    .productId(12)
+                    .build();
+            productImageService.create(image12);
+
+
+
         };
     }
 }
