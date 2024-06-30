@@ -64,11 +64,11 @@ public class User implements UserDetails {
     @JsonIgnore
     @JsonManagedReference
     private List<Order> orders;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonIgnore
-    @JsonManagedReference
-    private List<Product> products;
+//
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    @JsonIgnore
+//    @JsonManagedReference
+//    private List<Product> products;
 
     // user detail
     @Override

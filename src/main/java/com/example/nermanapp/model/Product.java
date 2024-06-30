@@ -46,12 +46,12 @@ public class Product {
     @JsonBackReference
     private Category category;
 
-    @ManyToOne(cascade = CascadeType.MERGE, optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "UsersID")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    @JsonBackReference
-    private User user;
+//    @ManyToOne(cascade = CascadeType.MERGE, optional = false, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "UsersID")
+//    @EqualsAndHashCode.Exclude
+//    @ToString.Exclude
+//    @JsonBackReference
+//    private User user;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     @JsonManagedReference
