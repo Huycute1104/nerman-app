@@ -76,9 +76,9 @@ public class UserController {
 
     @PutMapping("/changePassword/{userId}")
 //    @PreAuthorize("hasAuthority('customer:update')")
-    public ResponseEntity<UserResponse> changePassword(
+    public UserResponse changePassword(
             @PathVariable int userId,
             @RequestBody UpdatePasswordRequest request) {
-        return ResponseEntity.ok(userService.updatePassword(userId, request));
+        return userService.updatePassword(userId, request);
     }
 }
