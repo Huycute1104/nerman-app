@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AddToCartRequest {
     private int customerID;
-    private int foodID;
+    private int productID;
 }

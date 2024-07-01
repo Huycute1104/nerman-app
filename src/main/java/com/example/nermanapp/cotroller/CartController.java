@@ -1,5 +1,6 @@
 package com.example.nermanapp.cotroller;
 
+import com.example.nermanapp.dto.Mapper.CartDTO;
 import com.example.nermanapp.dto.Request.CartRequest.AddToCartRequest;
 import com.example.nermanapp.dto.Request.CartRequest.UpdateCartRequest;
 import com.example.nermanapp.dto.Response.CartResponse.CartResponse;
@@ -18,6 +19,15 @@ import java.util.List;
 public class CartController {
     @Autowired
     private CartService cartService;
-
+    @PostMapping("")
+    //    @PreAuthorize("hasAuthority('customer:create')")
+    public CartResponse createCategory(@RequestBody AddToCartRequest request) {
+        return cartService.addToCart(request);
+    }
+    @GetMapping("/{id}")
+//    @PreAuthorize("hasAuthority('admin:read')")
+    public List<CartDTO> getCartByUser(@PathVariable int id) {
+        return cartService.getCartByUser(id);
+    }
 
 }

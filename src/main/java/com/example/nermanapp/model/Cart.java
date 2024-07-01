@@ -1,10 +1,8 @@
 package com.example.nermanapp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "Cart")
@@ -19,12 +17,18 @@ public class Cart {
     @Column(name = "CartID")
     private int cartID;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE, optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "UsersID")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JsonBackReference
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE, optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "ProductID")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JsonBackReference
     private Product product;
 
     @Column(name = "Quantity", nullable = false)
