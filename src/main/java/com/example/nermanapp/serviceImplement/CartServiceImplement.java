@@ -113,17 +113,30 @@ public class CartServiceImplement implements CartService {
     @Override
     public Cart upQuantity(int cartId) {
         var cart = cartRepo.findCartByCartID(cartId).orElseThrow(() -> new IllegalArgumentException("Cart not found"));
+        var product = cart.getProduct();
+
+        if (cart.getQuantity() >= product.getQuantity()) {
+            throw new IllegalStateException("Quantity exceeds available stock");
+        }
+
         cart.setQuantity(cart.getQuantity() + 1);
         cartRepo.save(cart);
         return cart;
     }
 
 
+
     @Override
     public Cart downQuantity(int cartId) {
         var cart = cartRepo.findCartByCartID(cartId).orElseThrow(() -> new IllegalArgumentException("Cart not found"));
+
+        if (cart.getQuantity() <= 1) {
+            throw new IllegalStateException("Quantity cannot be less than 1");
+        }
+
         cart.setQuantity(cart.getQuantity() - 1);
         cartRepo.save(cart);
         return cart;
     }
+
 }

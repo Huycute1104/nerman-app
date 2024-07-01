@@ -35,21 +35,25 @@ public class CartController {
         return ResponseEntity.ok(response);
     }
     @PutMapping("/up/{id}")
-    public ResponseEntity<Cart> increaseCartQuantity(@PathVariable int id) {
+    public ResponseEntity<?> increaseCartQuantity(@PathVariable int id) {
         try {
             Cart updatedCart = cartService.upQuantity(id);
             return ResponseEntity.ok(updatedCart);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(null);
+            return ResponseEntity.badRequest().body("Cart not found");
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(409).body("Quantity exceeds available stock");
         }
     }
     @PutMapping("/down/{id}")
-    public ResponseEntity<Cart> decreaseCartQuantity(@PathVariable int id) {
+    public ResponseEntity<?> decreaseCartQuantity(@PathVariable int id) {
         try {
             Cart updatedCart = cartService.downQuantity(id);
             return ResponseEntity.ok(updatedCart);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(null);
+            return ResponseEntity.badRequest().body("CartItem not found");
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(409).body("Quantity cannot be less than 1");
         }
     }
 
