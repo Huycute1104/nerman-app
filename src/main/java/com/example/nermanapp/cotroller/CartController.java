@@ -53,7 +53,7 @@ public class CartController {
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body("CartItem not found");
         } catch (IllegalStateException e) {
-            return ResponseEntity.status(409).body("Quantity cannot be less than 1");
+            return ResponseEntity.status(406).body("Quantity cannot be less than 1");
         }
     }
 
