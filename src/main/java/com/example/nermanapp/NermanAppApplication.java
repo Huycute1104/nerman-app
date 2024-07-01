@@ -101,7 +101,7 @@ public class NermanAppApplication {
 
             var customer3 = RegisterRequest.builder()
                     .name("Minh Trí")
-                    .email("tri@gmail.com")
+                    .email("trihuynh1811@gmail.com")
                     .status(true)
                     .password("123")
                     .phone("1231231234")
@@ -112,7 +112,7 @@ public class NermanAppApplication {
 
             var customer4 = RegisterRequest.builder()
                     .name("Phước Hữu")
-                    .email("phuoc@gmail.com")
+                    .email("huuphuocnguyen2002@gmail.com")
                     .status(true)
                     .password("123")
                     .phone("1231231234")
@@ -123,7 +123,7 @@ public class NermanAppApplication {
 
             var customer5 = RegisterRequest.builder()
                     .name("Lương")
-                    .email("luong@gmail.com")
+                    .email("camkionline@gmail.com")
                     .status(true)
                     .password("123")
                     .phone("1231231234")
@@ -134,7 +134,7 @@ public class NermanAppApplication {
 
             var customer6 = RegisterRequest.builder()
                     .name("Nhật")
-                    .email("nhat@gmail.com")
+                    .email("nle75234@gmail.com")
                     .status(true)
                     .password("123")
                     .phone("1231231234")
@@ -145,7 +145,7 @@ public class NermanAppApplication {
 
             var customer7 = RegisterRequest.builder()
                     .name("Hải")
-                    .email("hai@gmail.com")
+                    .email("haivv.se@gmail.com")
                     .status(true)
                     .password("123")
                     .phone("1231231234")
@@ -154,6 +154,16 @@ public class NermanAppApplication {
                     .build();
             service.register(customer7);
 
+            var customer8 = RegisterRequest.builder()
+                    .name("Test")
+                    .email("test@gmail.com")
+                    .status(true)
+                    .password("123")
+                    .phone("1231231234")
+                    .role(CUSTOMER)
+                    .avatar("https://res.cloudinary.com/dpxs39hkb/image/upload/v1719499363/wlimd1mgkqztk2ygdfgx.webp")
+                    .build();
+            service.register(customer8);
             var category = CreateCategoryRequest.builder()
                     .categoryName("Chăm sóc cơ thể")
                     .build();
