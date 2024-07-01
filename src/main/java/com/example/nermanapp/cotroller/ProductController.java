@@ -1,5 +1,6 @@
 package com.example.nermanapp.cotroller;
 
+import com.example.nermanapp.dto.Mapper.ProductDTO;
 import com.example.nermanapp.model.Product;
 import com.example.nermanapp.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,7 @@ public class ProductController {
 
     @GetMapping("")
 //    @PreAuthorize("hasAuthority('admin:read')")
-    public List<Product> getAllUsers() {
+    public List<ProductDTO> getProduct() {
         return productService.getAll();
     }
 

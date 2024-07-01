@@ -10,16 +10,22 @@ import com.example.nermanapp.dto.Request.ProductRequest.ProductRequest;
 import com.example.nermanapp.service.CategoryService;
 import com.example.nermanapp.service.ProductImageService;
 import com.example.nermanapp.service.ProductService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import static com.example.nermanapp.enums.Role.*;
 
 @SpringBootApplication
+@RequiredArgsConstructor
+@RestController
+@RequestMapping(path = "/")
 public class NermanAppApplication {
 
     public static void main(String[] args) {

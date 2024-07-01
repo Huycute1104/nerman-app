@@ -2,6 +2,8 @@ package com.example.nermanapp.serviceImplement;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.example.nermanapp.dto.Mapper.ProductDTO;
+import com.example.nermanapp.dto.Mapper.ProductMapper;
 import com.example.nermanapp.dto.Request.ProductRequest.ProductRequest;
 import com.example.nermanapp.dto.Response.ProductResponse.ProductResponse;
 import com.example.nermanapp.model.Product;
@@ -17,6 +19,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImplement implements ProductService {
@@ -29,9 +32,12 @@ public class ProductServiceImplement implements ProductService {
 
 
     @Override
-    public List<Product> getAll() {
-        return List.of();
+    public List<ProductDTO> getAll() {
+        return productRepo.findAll().stream()
+                .map(ProductMapper::toProductDTO)
+                .collect(Collectors.toList());
     }
+
 
     @Override
     public ProductResponse create(ProductRequest product) {
