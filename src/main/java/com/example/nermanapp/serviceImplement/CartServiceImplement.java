@@ -82,7 +82,19 @@ public class CartServiceImplement implements CartService {
 
     @Override
     public CartResponse deleteCartItem(int cartId) {
-        return null;
+        var cart = cartRepo.findCartByCartID(cartId).orElse(null);
+        if (cart == null) {
+            return CartResponse.builder()
+                    .status("Product not found")
+                    .cart(null)
+                    .build();
+        }else{
+            cartRepo.delete(cart);
+            return CartResponse.builder()
+                    .status("Product deleted successfully")
+                    .cart(null)
+                    .build();
+        }
     }
 
     @Override

@@ -29,5 +29,10 @@ public class CartController {
     public List<CartDTO> getCartByUser(@PathVariable int id) {
         return cartService.getCartByUser(id);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<CartResponse> deleteFood(@PathVariable int id) {
+        CartResponse response = cartService.deleteCartItem(id);
+        return ResponseEntity.ok(response);
+    }
 
 }
