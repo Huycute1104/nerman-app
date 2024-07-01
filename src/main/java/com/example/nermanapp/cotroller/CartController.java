@@ -34,5 +34,23 @@ public class CartController {
         CartResponse response = cartService.deleteCartItem(id);
         return ResponseEntity.ok(response);
     }
+    @PutMapping("/up/{id}")
+    public ResponseEntity<Cart> increaseCartQuantity(@PathVariable int id) {
+        try {
+            Cart updatedCart = cartService.upQuantity(id);
+            return ResponseEntity.ok(updatedCart);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+    @PutMapping("/down/{id}")
+    public ResponseEntity<Cart> decreaseCartQuantity(@PathVariable int id) {
+        try {
+            Cart updatedCart = cartService.downQuantity(id);
+            return ResponseEntity.ok(updatedCart);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
 
 }
