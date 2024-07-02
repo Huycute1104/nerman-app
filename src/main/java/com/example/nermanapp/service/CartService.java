@@ -13,4 +13,6 @@ public interface CartService {
     public CartResponse updateCart(int cartId, UpdateCartRequest request);
     public CartResponse deleteCartItem(int cartId);
     public List<CartDTO> getCartByUser(int userId);
+    public  Cart upQuantity(int cartId);
+    public  Cart downQuantity(int cartId);
 }

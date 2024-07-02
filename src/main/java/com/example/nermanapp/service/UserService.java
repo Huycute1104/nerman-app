@@ -19,4 +19,6 @@ public interface UserService {
     public List<User> getCustomer();
     public List<User> getStaff();
     public Optional<User> getUserById(int id);
+    User saveUserForMail(User user);
+    User findByEmailForMail(String email);
 }

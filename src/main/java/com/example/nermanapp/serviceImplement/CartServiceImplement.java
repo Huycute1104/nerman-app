@@ -82,7 +82,19 @@ public class CartServiceImplement implements CartService {
 
     @Override
     public CartResponse deleteCartItem(int cartId) {
-        return null;
+        var cart = cartRepo.findCartByCartID(cartId).orElse(null);
+        if (cart == null) {
+            return CartResponse.builder()
+                    .status("Product not found")
+                    .cart(null)
+                    .build();
+        }else{
+            cartRepo.delete(cart);
+            return CartResponse.builder()
+                    .status("Product deleted successfully")
+                    .cart(null)
+                    .build();
+        }
     }
 
     @Override
@@ -97,4 +109,34 @@ public class CartServiceImplement implements CartService {
         }
 
     }
+
+    @Override
+    public Cart upQuantity(int cartId) {
+        var cart = cartRepo.findCartByCartID(cartId).orElseThrow(() -> new IllegalArgumentException("Cart not found"));
+        var product = cart.getProduct();
+
+        if (cart.getQuantity() >= product.getQuantity()) {
+            throw new IllegalStateException("Quantity exceeds available stock");
+        }
+
+        cart.setQuantity(cart.getQuantity() + 1);
+        cartRepo.save(cart);
+        return cart;
+    }
+
+
+
+    @Override
+    public Cart downQuantity(int cartId) {
+        var cart = cartRepo.findCartByCartID(cartId).orElseThrow(() -> new IllegalArgumentException("Cart not found"));
+
+        if (cart.getQuantity() <= 1) {
+            throw new IllegalStateException("Quantity cannot be less than 1");
+        }
+
+        cart.setQuantity(cart.getQuantity() - 1);
+        cartRepo.save(cart);
+        return cart;
+    }
+
 }

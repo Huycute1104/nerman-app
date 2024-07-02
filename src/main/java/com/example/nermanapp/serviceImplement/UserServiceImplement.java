@@ -50,6 +50,16 @@ public class UserServiceImplement implements UserService {
     }
 
     @Override
+    public User saveUserForMail(User user) {
+        return userRepo.save(user);
+    }
+
+    @Override
+    public User findByEmailForMail(String email) {
+        return userRepo.findByEmail(email).orElse(null);
+    }
+
+    @Override
     public UserResponse banUser(int userId) {
         //find user by userid
         var banUser = userRepo.findUserByUsersID(userId).orElse(null);

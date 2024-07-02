@@ -11,10 +11,12 @@ import com.example.nermanapp.service.CategoryService;
 import com.example.nermanapp.service.ProductImageService;
 import com.example.nermanapp.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +30,8 @@ import static com.example.nermanapp.enums.Role.*;
 @RequestMapping(path = "/")
 public class NermanAppApplication {
 
+    private final JavaMailSender javaMailSender;
+    @Value("${spring.mail.username}")
     public static void main(String[] args) {
         SpringApplication.run(NermanAppApplication.class, args);
     }
@@ -97,7 +101,7 @@ public class NermanAppApplication {
 
             var customer3 = RegisterRequest.builder()
                     .name("Minh Trí")
-                    .email("tri@gmail.com")
+                    .email("trihuynh1811@gmail.com")
                     .status(true)
                     .password("123")
                     .phone("1231231234")
@@ -108,7 +112,7 @@ public class NermanAppApplication {
 
             var customer4 = RegisterRequest.builder()
                     .name("Phước Hữu")
-                    .email("phuoc@gmail.com")
+                    .email("huuphuocnguyen2002@gmail.com")
                     .status(true)
                     .password("123")
                     .phone("1231231234")
@@ -119,7 +123,7 @@ public class NermanAppApplication {
 
             var customer5 = RegisterRequest.builder()
                     .name("Lương")
-                    .email("luong@gmail.com")
+                    .email("camkionline@gmail.com")
                     .status(true)
                     .password("123")
                     .phone("1231231234")
@@ -130,7 +134,7 @@ public class NermanAppApplication {
 
             var customer6 = RegisterRequest.builder()
                     .name("Nhật")
-                    .email("nhat@gmail.com")
+                    .email("nle75234@gmail.com")
                     .status(true)
                     .password("123")
                     .phone("1231231234")
@@ -141,7 +145,7 @@ public class NermanAppApplication {
 
             var customer7 = RegisterRequest.builder()
                     .name("Hải")
-                    .email("hai@gmail.com")
+                    .email("haivv.se@gmail.com")
                     .status(true)
                     .password("123")
                     .phone("1231231234")
@@ -150,6 +154,16 @@ public class NermanAppApplication {
                     .build();
             service.register(customer7);
 
+            var customer8 = RegisterRequest.builder()
+                    .name("Test")
+                    .email("test@gmail.com")
+                    .status(true)
+                    .password("123")
+                    .phone("1231231234")
+                    .role(CUSTOMER)
+                    .avatar("https://res.cloudinary.com/dpxs39hkb/image/upload/v1719499363/wlimd1mgkqztk2ygdfgx.webp")
+                    .build();
+            service.register(customer8);
             var category = CreateCategoryRequest.builder()
                     .categoryName("Chăm sóc cơ thể")
                     .build();
