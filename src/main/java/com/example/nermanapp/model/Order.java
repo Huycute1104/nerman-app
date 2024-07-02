@@ -30,7 +30,7 @@ public class Order {
     private Date orderDate;
 
     @Column(name = "Total")
-    private float total;
+    private double total;
 
     @Column(name = "CustomerPhone")
     private String customerPhone;
@@ -49,13 +49,6 @@ public class Order {
     @JsonManagedReference
     @JsonIgnore
     private Set<OrderDetail> orderDetails;
-
-    @ManyToOne(cascade = CascadeType.MERGE, optional = true, fetch = FetchType.LAZY)
-    @JoinColumn(name = "VoucherID", nullable = true)
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    @JsonBackReference
-    private Voucher voucher;
 
     @ManyToOne(cascade = CascadeType.MERGE, optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "UsersID", nullable = true)

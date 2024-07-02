@@ -8,6 +8,7 @@ import com.example.nermanapp.dto.Request.CategoryRequest.CreateCategoryRequest;
 import com.example.nermanapp.dto.Request.ProductRequest.ImageRequest;
 import com.example.nermanapp.dto.Request.ProductRequest.ProductRequest;
 import com.example.nermanapp.service.CategoryService;
+import com.example.nermanapp.service.OrderService;
 import com.example.nermanapp.service.ProductImageService;
 import com.example.nermanapp.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -60,7 +61,8 @@ public class NermanAppApplication {
             AuthenticationService service,
             CategoryService categoryService,
             ProductService productService,
-            ProductImageService productImageService
+            ProductImageService productImageService,
+            OrderService orderService
     ) {
         return args -> {
             //Admin
