@@ -18,6 +18,7 @@ public class CreateOrderRequest {
     private String customerAddress;
     private String customerName;
     private List<CreateOrderRequest.OrderProductRequest> products;
+    @Builder
     @Data
     public static class OrderProductRequest {
         private int productId;

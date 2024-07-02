@@ -5,6 +5,7 @@ import com.cloudinary.utils.ObjectUtils;
 import com.example.nermanapp.auth.AuthenticationService;
 import com.example.nermanapp.auth.RegisterRequest;
 import com.example.nermanapp.dto.Request.CategoryRequest.CreateCategoryRequest;
+import com.example.nermanapp.dto.Request.OrderRequest.CreateOrderRequest;
 import com.example.nermanapp.dto.Request.ProductRequest.ImageRequest;
 import com.example.nermanapp.dto.Request.ProductRequest.ProductRequest;
 import com.example.nermanapp.service.CategoryService;
@@ -22,6 +23,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 import static com.example.nermanapp.enums.Role.*;
 
@@ -353,6 +356,81 @@ public class NermanAppApplication {
             productImageService.create(image12);
 
 
+            List<CreateOrderRequest.OrderProductRequest> orderItems = List.of(
+                    CreateOrderRequest.OrderProductRequest.builder()
+                            .productId(1)
+                            .quantity(1)
+                            .build(),
+                    CreateOrderRequest.OrderProductRequest.builder()
+                            .productId(2)
+                            .quantity(1)
+                            .build()
+            );
+            var order = CreateOrderRequest.builder()
+                    .total(250000)
+                    .customerId(3)
+                    .customerName("Huy Phạm")
+                    .customerAddress("Bình Định")
+                    .customerPhone("0392272536")
+                    .products(orderItems)
+                    .build();
+            orderService.createOrderWithDetails(order);
+
+            List<CreateOrderRequest.OrderProductRequest> orderItems2 = List.of(
+                    CreateOrderRequest.OrderProductRequest.builder()
+                            .productId(8)
+                            .quantity(2)
+                            .build(),
+                    CreateOrderRequest.OrderProductRequest.builder()
+                            .productId(9)
+                            .quantity(3)
+                            .build()
+            );
+            var order2 = CreateOrderRequest.builder()
+                    .total(1210000)
+                    .customerId(4)
+                    .customerName("Minh Trí")
+                    .customerAddress("HCM")
+                    .customerPhone("0321546587")
+                    .products(orderItems2)
+                    .build();
+            orderService.createOrderWithDetails(order2);
+
+            List<CreateOrderRequest.OrderProductRequest> orderItems3 = List.of(
+                    CreateOrderRequest.OrderProductRequest.builder()
+                            .productId(8)
+                            .quantity(1)
+                            .build()
+            );
+            var order3 = CreateOrderRequest.builder()
+                    .total(500000)
+                    .customerId(5)
+                    .customerName("Hữu Phước")
+                    .customerAddress("Phú Yên")
+                    .customerPhone("0392123698")
+                    .products(orderItems3)
+                    .build();
+            orderService.createOrderWithDetails(order3);
+
+            List<CreateOrderRequest.OrderProductRequest> orderItems4 = List.of(
+                    CreateOrderRequest.OrderProductRequest.builder()
+                            .productId(10)
+                            .quantity(2)
+                            .build(),
+                    CreateOrderRequest.OrderProductRequest.builder()
+                            .productId(5)
+                            .quantity(2)
+                            .build()
+            );
+            var order4 = CreateOrderRequest.builder()
+                    .total(360000)
+                    .customerId(7)
+                    .customerName("Nhật")
+                    .customerAddress("HCM")
+                    .customerPhone("0392545125")
+                    .products(orderItems4)
+                    .build();
+            orderService.createOrderWithDetails(order4);
 
         };
     }
