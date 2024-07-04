@@ -1,8 +1,7 @@
-package com.example.nermanapp.cotroller;
+package com.example.nermanapp.controller;
 
 import com.example.nermanapp.dto.Mapper.CartDTO;
 import com.example.nermanapp.dto.Request.CartRequest.AddToCartRequest;
-import com.example.nermanapp.dto.Request.CartRequest.UpdateCartRequest;
 import com.example.nermanapp.dto.Response.CartResponse.CartResponse;
 import com.example.nermanapp.model.Cart;
 import com.example.nermanapp.service.CartService;

@@ -1,4 +1,4 @@
-package com.example.nermanapp.controller;
+packagecom.example.nermanapp.controller;
 
 import com.example.nermanapp.auth.AuthenticationRequest;
 import com.example.nermanapp.auth.AuthenticationResponse;

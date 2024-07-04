@@ -1,9 +1,8 @@
-package com.example.nermanapp.cotroller;
+package com.example.nermanapp.controller;
 
 import com.example.nermanapp.dto.Mapper.OrderDTO;
 import com.example.nermanapp.dto.Request.OrderRequest.CreateOrderRequest;
 import com.example.nermanapp.dto.Response.OrderResponse.OrderResponse;
-import com.example.nermanapp.model.Order;
 import com.example.nermanapp.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

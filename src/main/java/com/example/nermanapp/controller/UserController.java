@@ -1,4 +1,4 @@
-package com.example.nermanapp.cotroller;
+package com.example.nermanapp.controller;
 
 import com.example.nermanapp.dto.Request.UserRequest.UpdatePasswordRequest;
 import com.example.nermanapp.dto.Request.UserRequest.UpdateUserRequest;
