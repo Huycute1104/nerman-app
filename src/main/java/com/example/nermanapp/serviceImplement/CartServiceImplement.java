@@ -139,4 +139,12 @@ public class CartServiceImplement implements CartService {
         return cart;
     }
 
+    @Override
+    public int getQuantityInCart(int customerId) {
+        var customer = userRepo.findUserByUsersID(customerId)
+                .orElseThrow(() -> new IllegalArgumentException("Customer not found"));
+        return cartRepo.countCartByUser(customer);
+    }
+
+
 }

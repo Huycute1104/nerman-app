@@ -57,4 +57,10 @@ public class CartController {
         }
     }
 
+    @GetMapping("/quantityCart/{customerId}")
+    public ResponseEntity<Integer> getQuantityInCart(@PathVariable int customerId) {
+        int quantity = cartService.getQuantityInCart(customerId);
+        return ResponseEntity.ok(quantity);
+    }
+
 }

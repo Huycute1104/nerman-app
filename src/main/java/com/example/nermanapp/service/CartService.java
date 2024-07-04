@@ -15,4 +15,5 @@ public interface CartService {
     public List<CartDTO> getCartByUser(int userId);
     public  Cart upQuantity(int cartId);
     public  Cart downQuantity(int cartId);
+    int getQuantityInCart(int customerId);
 }
