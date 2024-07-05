@@ -64,4 +64,10 @@ public class ProductServiceImplement implements ProductService {
                 .build();
     }
 
+    @Override
+    public ProductDTO getProductById(int id) {
+        return productRepo.findById(id)
+                .map(ProductMapper::toProductDTO)
+                .orElse(null);
+    }
 }
