@@ -38,6 +38,7 @@ public class CartServiceImplement implements CartService {
                 if (checkCart != null) {
                     if (checkCart.getQuantity() < product.getQuantity()) {
                         checkCart.setQuantity(checkCart.getQuantity() + 1);
+                        checkCart.setPrice(checkCart.getPrice() + product.getPrice());
                         cartRepo.save(checkCart);
                         return CartResponse.builder()
                                 .status("Add to cart successfully")
@@ -54,6 +55,7 @@ public class CartServiceImplement implements CartService {
                             .user(customer)
                             .product(product)
                             .quantity(1)
+                            .price(product.getPrice())
                             .build();
                     cartRepo.save(cart);
                     return CartResponse.builder()
@@ -120,6 +122,7 @@ public class CartServiceImplement implements CartService {
         }
 
         cart.setQuantity(cart.getQuantity() + 1);
+        cart.setPrice(cart.getPrice() + product.getPrice());
         cartRepo.save(cart);
         return cart;
     }
@@ -129,12 +132,13 @@ public class CartServiceImplement implements CartService {
     @Override
     public Cart downQuantity(int cartId) {
         var cart = cartRepo.findCartByCartID(cartId).orElseThrow(() -> new IllegalArgumentException("Cart not found"));
-
+        var product = cart.getProduct();
         if (cart.getQuantity() <= 1) {
             throw new IllegalStateException("Quantity cannot be less than 1");
         }
 
         cart.setQuantity(cart.getQuantity() - 1);
+        cart.setPrice(cart.getPrice() - product.getPrice());
         cartRepo.save(cart);
         return cart;
     }

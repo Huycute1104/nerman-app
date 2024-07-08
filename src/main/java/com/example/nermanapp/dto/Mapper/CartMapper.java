@@ -9,6 +9,7 @@ public class CartMapper {
                 .id(cart.getCartID())
                 .productCartDTO(toProductCartDTO(cart.getProduct()))
                 .quantity(cart.getQuantity())
+                .price(cart.getPrice())
                 .build();
     }
 

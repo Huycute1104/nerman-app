@@ -31,6 +31,9 @@ public class Cart {
     @JsonBackReference
     private Product product;
 
+    @Column(name = "Price")
+    private double price;
+
     @Column(name = "Quantity", nullable = false)
     private int quantity;
 
