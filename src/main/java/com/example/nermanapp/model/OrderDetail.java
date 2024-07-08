@@ -20,7 +20,7 @@ public class OrderDetail {
     private int quantity;
 
     @Column(name = "Price")
-    private float price;
+    private double price;
 
     @ManyToOne(cascade = CascadeType.MERGE, optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "ProductID")

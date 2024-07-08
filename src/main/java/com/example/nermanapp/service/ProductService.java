@@ -11,6 +11,6 @@ import java.util.Optional;
 public interface ProductService {
     public List<ProductDTO> getAll();
     public ProductResponse create(ProductRequest product);
-
+    ProductDTO getProductById(int id);
 }
 

@@ -1,4 +1,4 @@
-package com.example.nermanapp.cotroller;
+package com.example.nermanapp.controller;
 
 import com.example.nermanapp.dto.Request.CategoryRequest.CreateCategoryRequest;
 import com.example.nermanapp.dto.Response.CategoryResponse.CategoryResponse;

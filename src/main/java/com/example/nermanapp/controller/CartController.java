@@ -1,8 +1,7 @@
-package com.example.nermanapp.cotroller;
+package com.example.nermanapp.controller;
 
 import com.example.nermanapp.dto.Mapper.CartDTO;
 import com.example.nermanapp.dto.Request.CartRequest.AddToCartRequest;
-import com.example.nermanapp.dto.Request.CartRequest.UpdateCartRequest;
 import com.example.nermanapp.dto.Response.CartResponse.CartResponse;
 import com.example.nermanapp.model.Cart;
 import com.example.nermanapp.service.CartService;
@@ -55,6 +54,12 @@ public class CartController {
         } catch (IllegalStateException e) {
             return ResponseEntity.status(406).body("Quantity cannot be less than 1");
         }
+    }
+
+    @GetMapping("/quantityCart/{customerId}")
+    public ResponseEntity<Integer> getQuantityInCart(@PathVariable int customerId) {
+        int quantity = cartService.getQuantityInCart(customerId);
+        return ResponseEntity.ok(quantity);
     }
 
 }
