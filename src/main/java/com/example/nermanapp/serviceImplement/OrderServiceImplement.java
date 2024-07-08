@@ -82,7 +82,9 @@ public class OrderServiceImplement implements OrderService {
                         .build();
             }
             double itemTotal = (product.getPrice()) * productRequest.getQuantity();
+            System.out.println(itemTotal);
             calculatedTotal += itemTotal;
+            System.out.println(calculatedTotal);
 
             OrderDetail orderDetail = OrderDetail.builder()
                     .product(product)
@@ -92,16 +94,17 @@ public class OrderServiceImplement implements OrderService {
             orderDetails.add(orderDetail);
         }
         System.out.println(calculatedTotal);
-        if (request.getTotal() <= 0
-                || request.getTotal() != calculatedTotal
-        ) {
-            return OrderResponse.builder()
-                    .status("Invalid total value")
-                    .order(null)
-                    .orderDetails(null)
-                    .statusCode(400)
-                    .build();
-        }
+        System.out.println(request.getTotal());
+//        if (request.getTotal() <= 0
+//                || request.getTotal() != calculatedTotal
+//        ) {
+//            return OrderResponse.builder()
+//                    .status("Invalid total value")
+//                    .order(null)
+//                    .orderDetails(null)
+//                    .statusCode(400)
+//                    .build();
+//        }
 
         Order order = Order.builder()
                 .orderDate(new Date())

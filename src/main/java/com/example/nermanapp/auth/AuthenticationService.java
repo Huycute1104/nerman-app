@@ -134,18 +134,25 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse login(AuthenticationRequest request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
+//        authenticationManager.authenticate(
+//                new UsernamePasswordAuthenticationToken(
+//                        request.getEmail(),
+//                        request.getPassword()
+//                )
+//        );
         var user = userRepo.findByEmail(request.getEmail()).orElseThrow();
         if (!user.isUserStatus()) {
             return AuthenticationResponse.builder()
                     .status("User is ban")
                     .build();
-        } else {
+        }
+        if(user == null || (user != null && !passwordEncoder.matches(request.getPassword(), user.getPassword()))){
+            System.out.println(passwordEncoder.matches(request.getPassword(), user.getPassword()));
+            return AuthenticationResponse.builder()
+                    .status("Wrong email or password")
+                    .build();
+        }
+        else {
             var jwtToken = jwtService.generateToken(user);
             var refreshToken = jwtService.generateRefreshToken(user);
             revokeAllUserTokens(user);
